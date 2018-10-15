@@ -1,0 +1,17 @@
+{
+    "backend": {
+      "file": {
+        "path": "/opt/vault/data"
+      }
+    },
+    "listener": {
+      "tcp":{
+        "address": "0.0.0.0:8200",
+        "tls_cert_file": "/mnt/secrets/server.crt",
+        "tls_key_file" : "/mnt/secrets/server.key",
+        "tls_disable_client_certs": true
+      }
+    },
+    "ui": true,
+    "disable_mlock": true
+}

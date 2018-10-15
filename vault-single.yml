@@ -1,0 +1,66 @@
+---
+# Vault Service.
+# The Service exposes a NodePort at 30820.
+#
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "vault"
+spec:
+  type: "NodePort"
+  selector:
+    app: "vault"
+  ports:
+  - port: 8200
+    protocol: "TCP"
+    targetPort: 8200
+    nodePort: 30820
+---
+# Vault Deployment. 
+# The Deployment expects a SSL certificate to be configured as a Secret named 'server-certificate'.
+#
+apiVersion: "extensions/v1beta1"
+kind: Deployment
+metadata:
+  name: "vault"
+  labels:
+    app: "vault"
+spec:
+  template:
+    metadata:
+      labels:
+        app: "vault"
+    spec:
+      containers:
+      - name: vault
+        image: nirmata/k8s-vault-single:latest
+        args: ["server", "-config",  "/opt/vault/config"]        
+        ports:
+        - containerPort: 8200
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /mnt/secrets
+          name: cert
+        - mountPath: /opt/vault/data
+          name: vault-data-volume
+          readOnly: false
+      volumes:
+      - name: cert
+        secret:
+          secretName: tls-certificate
+      - name: "vault-data-volume"
+        persistentVolumeClaim:
+          claimName: vault-pv-claim
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vault-pv-claim
+  labels:
+    app: vault
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
