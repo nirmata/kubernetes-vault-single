@@ -5,7 +5,7 @@ FROM alpine
 ENV VAULT_VERSION 0.11.2
 
 # create a new directory
-RUN mkdir /opt && mkdir /opt/vault && mkdir /opt/vault/config && mkdir /opt/vault/ssl
+RUN mkdir /opt/vault && mkdir /opt/vault/config && mkdir /opt/vault/ssl
 
 # download dependencies
 RUN apk --no-cache add \

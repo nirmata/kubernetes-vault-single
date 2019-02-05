@@ -1,6 +1,6 @@
 .DEFAULT_GOAL: build
 
-TAG=latest
+TAG=1.0.0
 PREFIX?=nirmata/k8s-vault-single
 
 build: 

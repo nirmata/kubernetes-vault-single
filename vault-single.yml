@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: vault
-        image: nirmata/k8s-vault-single:latest
+        image: nirmata/k8s-vault-single:1.0.0
         args: ["server", "-config",  "/opt/vault/config"]        
         ports:
         - containerPort: 8200
