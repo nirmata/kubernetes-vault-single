@@ -2,6 +2,8 @@
 
 Single node Vault service for Kubernetes that uses file storage
 
+**This image and configuration is intended for test purposes and not for production use.**
+
 ## Credits
 
 This work was influenced by https://testdriven.io/managing-secrets-with-vault-and-consul
@@ -25,7 +27,7 @@ The Kubernetes deployment YAML reads a Secret called **tls-certificate** and wri
 You can load an existing certifucate, or use these commands to generate a new self-signed certificate:
 
 <pre>
-openssl req -subj '/O=name /CN=domain /C=country' -new -newkey rsa:2048 -days 3650 -sha256 -nodes -x509 -keyout server.key -out server.crt
+openssl req -subj '/O=test /CN=test.com /C=US' -new -newkey rsa:2048 -days 3650 -sha256 -nodes -x509 -keyout server.key -out server.crt
 </pre>
 
 To create the Kubernetes secret use:
