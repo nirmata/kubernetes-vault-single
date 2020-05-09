@@ -2,7 +2,7 @@
 FROM alpine
 
 # set vault version
-ENV VAULT_VERSION 0.11.2
+ENV VAULT_VERSION 1.4.1
 
 # create a new directory
 RUN mkdir /opt/vault && mkdir /opt/vault/config && mkdir /opt/vault/ssl
