@@ -19,7 +19,7 @@ spec:
 # Vault Deployment. 
 # The Deployment expects a SSL certificate to be configured as a Secret named 'server-certificate'.
 #
-apiVersion: "extensions/v1beta1"
+apiVersion: "apps/v1"
 kind: Deployment
 metadata:
   name: "vault"
