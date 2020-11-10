@@ -26,6 +26,9 @@ metadata:
   labels:
     app: "vault"
 spec:
+  selector:
+    matchLabels:
+      app: "vault"
   template:
     metadata:
       labels:
