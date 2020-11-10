@@ -28,7 +28,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: "vault"
+      app: "vault-invalid"
   template:
     metadata:
       labels:
